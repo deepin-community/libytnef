@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/pkg-info.mk
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export DEB_CFLAGS_MAINT_APPEND  = -Wall -Wextra
+
+%:
+	dh $@
+
+execute_before_dh_auto_build:
+	$(MAKE) -C debian/manpages VERSION=$(DEB_VERSION)
+
+execute_before_dh_clean:
+	$(MAKE) -C debian/manpages clean
+
+override_dh_makeshlibs:
+	dh_makeshlibs -- -c4

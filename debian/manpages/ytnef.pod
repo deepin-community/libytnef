@@ -1,0 +1,94 @@
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+ytnef - export files from TNEF archives
+
+=head1 SYNOPSIS
+
+B<ytnef> [B<+->][B<afvF>] I<filename> [I<filename> [...]]
+
+B<ytnef> B<-h>
+
+=head1 DESCRIPTION
+
+This manual page documents briefly the B<ytnef> program.
+
+This manual page was written for the Debian™ distribution because the
+original program does not have a manual page.
+
+B<ytnef> is a command line utility which allows parsing and extracting
+the files contained in TNEF attachments, also known as F<winmail.dat>
+attachments.
+
+=head1 OPTIONS
+
+Option flags are enabled when preceded by minus sign and disabled when
+preceded by plus sign.
+
+=over 8
+
+=item B<-a>|B<+a>
+
+Enables/disables saving of intermediate files.
+
+=item B<-f>|B<+f>
+
+Enables/disables saving of attachments.
+
+=item B<-v>|B<+v>
+
+Enables/disables verbose output. This option can be specified multiple
+times to increase/decrease the verbosity level of output.
+
+=item B<-F>|B<+F>
+
+Enables/disables saving of the message body as RTF.
+
+=item B<-h>
+
+Displays a brief help message.
+
+=back
+
+=head1 RETURN VALUE
+
+Returns the number of files which failed to be parsed.
+
+=head1 EXAMPLES
+
+=over 8
+
+=item ytnef -v winmail.dat
+
+Parse I<winmail.dat> with verbose output, don't save files.
+
+=item ytnef -f . winmail.dat
+
+Parse and save all attachments in I<winmail.dat> to the current
+directory.
+
+=item ytnef -F -f . winmail.dat
+
+Parse and save all attachments in I<winmail.dat> to the current
+directory, also save the message text to a RTF file.
+
+=back
+
+=head1 COPYRIGHT
+
+Copyright © 2020 Ricardo Mones
+
+This manual page was written for the Debian system (but may be used by
+others).
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU General Public License, Version 3 or (at your
+option) any later version published by the Free Software Foundation.
+
+On Debian systems, the complete text of the GNU General Public License
+can be found in F</usr/share/common-licenses/GPL>.
+
+=cut

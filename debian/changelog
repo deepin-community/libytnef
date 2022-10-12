@@ -1,0 +1,214 @@
+libytnef (2.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump watch file to version 4.
+  * Drop version 0.0.0 from symbols file to generate unversioned dependencies.
+  * Update Standards-Version to 4.6.0.
+  * Drop all patches, included upstream.
+  * Don't pass --as-needed to the linker, as it's now the default.
+
+ -- Jordi Mallach <jordi@debian.org>  Thu, 23 Sep 2021 00:37:21 +0200
+
+libytnef (1.9.3-3) unstable; urgency=medium
+
+  * Add patch fixing CVE-2021-3403.
+    Thanks to Oliver Giles, Salvatore Bonaccorso (Closes: #982594)
+  * Add patch fixing CVE-2021-3404.
+    Thanks to Oliver Giles, Salvatore Bonaccorso (Closes: #982596)
+  * Raise Standards-Version to 4.5.1, no other changes
+  * Add upstream metadata
+
+ -- Ricardo Mones <mones@debian.org>  Sun, 14 Feb 2021 00:02:20 +0100
+
+libytnef (1.9.3-2) unstable; urgency=medium
+
+  [ Jordi Mallach ]
+  * Add fix for CVE-2017-9058.
+  * Release to unstable.
+
+  [ Ricardo Mones ]
+  * Remove patch for CVE-2017-9058 already in this release
+  * Use debhelper-compat and bump level to 13
+  * Bump Standards-Version to 4.5.0, no other changes
+  * Add Rules-Requires-Root field
+  * Add manpages for binaries in ytnef-tools (Closes: 852161)
+  * Add Build-Depends-Package to symbols file
+
+ -- Ricardo Mones <mones@debian.org>  Wed, 09 Sep 2020 19:06:22 +0200
+
+libytnef (1.9.3-1) unstable; urgency=medium
+
+  * New upstream release fixing the following:
+    • [CVE-2017-9470] NULL pointer dereference in MAPIPrint.
+      Closes: #870196.
+    • [CVE-2017-9471] heap-based-buffer overflow in SwapWord.
+      Closes: #870194.
+    • [CVE-2017-9474] heap-based buffer overflow in DecompressRTF.
+      Closes: #870192.
+    • [CVE-2017-12142] SEGV in ytnef.c in SwapDWord.
+      Closes: #870816.
+    • [CVE-2017-12141] heap-buffer-overflow in TNEFFillMapi.
+      Closes: #870815.
+    • [CVE-2017-12144] allocation failure  in TNEFFillMapi.
+      Closes: #870817.
+  * Remove patch for CVE-2017-9058 already in this release
+  * New maintainers for package (Closes: #460390)
+  * Priority extra has been replaced by optional
+  * Update Vcs-* for current infrastructure
+  * Standards-Version updated to latest
+  * Set debhelper compat level to 11
+
+ -- Ricardo Mones <mones@debian.org>  Sun, 21 Oct 2018 00:36:17 +0200
+
+libytnef (1.9.2-2) unstable; urgency=medium
+
+  * Add CVE information to previous changelog entry.
+  * Add CVE-2017-9058.patch: Fix a heap buffer overflow in SIZECHECK macro
+    (closes: #862556).
+
+ -- Jordi Mallach <jordi@debian.org>  Mon, 22 May 2017 23:51:52 +0200
+
+libytnef (1.9.2-1) unstable; urgency=medium
+
+  * QA upload.
+  * New upstream release.
+    - This release contains additional security fixes:
+      [CVE-2017-6800] Invalid memory access (heap overrun) in handling
+                      LONG data types
+      [CVE-2017-6801] Missing check for fields of size 0
+      [CVE-2017-6802] Potential buffer overrun in compressed RTF streams
+  * Add CVE information to previous changelog entry.
+  * Install pkg-config .pc file to -dev package.
+
+ -- Jordi Mallach <jordi@debian.org>  Tue, 07 Mar 2017 13:46:50 +0100
+
+libytnef (1.9.1-1) unstable; urgency=medium
+
+  * QA upload.
+  * New upstream release.
+    - This release contains fixes for the following vulnerabilities:
+      [CVE-2017-6298] Null pointer dereference
+      [CVE-2017-6299] Infinite loop / DoS in TNEFFillMapi function
+      [CVE-2017-6300] Buffer overflow
+      [CVE-2017-6301] Out of bounds read
+      [CVE-2017-6302] Integer overflow
+      [CVE-2017-6303] Invalid write and integer overflow
+      [CVE-2017-6304] Out of bounds read
+      [CVE-2017-6305] Out of bounds read and write
+      [CVE-2017-6306] Directory traversal in SanitizeFilename function
+      See more details at:
+      http://www.openwall.com/lists/oss-security/2017/02/15/4
+  * Add -Wall -Wextra to CFLAGS via DEB_CFLAGS_MAINT_APPEND.
+  * Add -Wl,--as-needed to LDFLAGS via DEB_LDFLAGS_MAINT_APPEND.
+  * Add Suggests for required Perl modules to run ytnefprocess.pl.
+
+ -- Jordi Mallach <jordi@debian.org>  Wed, 22 Feb 2017 00:50:36 +0100
+
+libytnef (1.9-1) unstable; urgency=medium
+
+  * QA upload.
+  * New upstream release.
+    - This release unifies libytnef and ytnef in a single autotools package.
+      The source should be renamed to ytnef, but will do later on due to
+      the stretch freeze.
+  * Drop all patches, merged upstream.
+  * Add Vcs-* fields pointing to new collab-maint git repo.
+  * Bump debhelper compat to v10.
+  * Update to Standards-Version 3.9.8, with no changes needed.
+  * Update Homepage field and watch file to point to Github project.
+  * Rewrite rules using dh sequencer.
+  * Rewrite copyright using machine-readable format v1.0.
+  * Pass --list-missing to dh_install.
+  * Pass -c4 to dpkg-gensymbols.
+  * Introduce a new ytnef-tools binary and tweak descriptions to mention it.
+  * Enable all hardening options.
+
+ -- Jordi Mallach <jordi@debian.org>  Wed, 04 Jan 2017 08:02:02 +0100
+
+libytnef (1.5-9) unstable; urgency=medium
+
+  * QA upload.
+  * Add patch to fix FTBFS with clang. Closes: #742146.
+
+ -- Ricardo Mones <mones@debian.org>  Sat, 22 Aug 2015 11:10:24 +0200
+
+libytnef (1.5-8) unstable; urgency=medium
+
+  * QA upload.
+  * Raised compat level to 9.
+  * Removed hardcoded Pre-Depends (thanks Lintian).
+  * Added watch file, just in case it goes alive again.
+  * Differentiate short descriptions of binary packages.
+  * Add library symbols file.
+  * Follow patching guidelines in all patches.
+
+ -- Ricardo Mones <mones@debian.org>  Fri, 21 Aug 2015 12:01:07 +0200
+
+libytnef (1.5-7) unstable; urgency=medium
+
+  * QA upload.
+  * Added patches/handle_pt_clsid.diff - Closes: #792462.
+  * Updated Standards-Version to latest.
+
+ -- Ricardo Mones <mones@debian.org>  Fri, 21 Aug 2015 01:10:30 +0200
+
+libytnef (1.5-6) unstable; urgency=medium
+
+  * QA upload.
+  * Build using dh-autoreconf.
+  * Multiarchify the packages.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 18 Dec 2013 13:04:19 +0100
+
+libytnef (1.5-5) unstable; urgency=low
+
+  * QA upload.
+  * Use dh_autotools-dev to update config.{sub,guess} for AArch64.
+  * Fix heap overflow (CVE-2010-5109). Closes: #705468.
+  * Use dpkg-buildflags for the build.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 10 Oct 2013 14:16:21 +0200
+
+libytnef (1.5-4) unstable; urgency=low
+
+  * QA upload.
+  * source/format, patches/series, patches/update_autofiles.patch
+  - Switch to dpkg-source 3.0 (quilt) format
+  * debian/control
+  - Bump Standards-Version to 3.9.2 (no other changes required)
+  - Add sourceforge project URL as Homepage field
+  - Add ${misc:Depends} to all binary packages (lintian)
+  * debian/rules
+  - Add recommended targets build-arch and build-indep (lintian)
+
+ -- Ricardo Mones <mones@debian.org>  Tue, 20 Sep 2011 08:13:13 +0200
+
+libytnef (1.5-3) unstable; urgency=low
+
+  * QA upload.
+  * Get rid of unneeded *.la files (Closes: #622540).
+
+ -- Alessio Treglia <alessio@debian.org>  Sat, 04 Jun 2011 10:03:07 +0200
+
+libytnef (1.5-2) unstable; urgency=low
+
+  * Orphaning this package. Thanks for the NMUs!
+  * Bump debhelper compat to 7 and Standards-Version to 3.8.3.
+  * Make dependency between libytnef0-dev and libytnef0 more strict.
+
+ -- Joshua Kwan <joshk@triplehelix.org>  Mon, 28 Sep 2009 10:13:48 -0700
+
+libytnef (1.5-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * call dh_makeshlibs before calling dh_installdeb.
+  * configure.ac: use AM_MAINTAINER_MODE.
+  * autotools related files: regenerate. Closes: bug#342670, #536118.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sun, 16 Aug 2009 21:10:48 +0200
+
+libytnef (1.5-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Joshua Kwan <joshk@triplehelix.org>  Mon,  9 May 2005 20:31:56 -0700

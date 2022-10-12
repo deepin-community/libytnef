@@ -1,0 +1,60 @@
+Source: libytnef
+Section: utils
+Priority: optional
+Maintainer: Ricardo Mones <mones@debian.org>
+Uploaders: Jordi Mallach <jordi@debian.org>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
+Homepage: https://github.com/Yeraze/ytnef
+Vcs-Git: https://salsa.debian.org/debian/ytnef.git
+Vcs-Browser: https://salsa.debian.org/debian/ytnef
+
+Package: libytnef0
+Architecture: any
+Multi-Arch: same
+Section: libs
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: improved decoder for application/ms-tnef attachments
+ Yerase's TNEF Stream Reader allows you to decode application/ms-tnef
+ e-mail attachments, which are usually entitled "winmail.dat" and are
+ generally a file container format that is only readable by Microsoft
+ Outlook. Some TNEF streams also include RTF-formatted data.
+ .
+ libytnef0 is the support library that exposes these functions to other
+ programs. The ytnef program is the frontend for this library, so you should
+ probably install that (included in ytnef-tools) if you want to take advantage
+ of it.
+
+Package: libytnef0-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, libytnef0 (= ${binary:Version})
+Provides: libytnef-dev
+Description: headers for application/ms-tnef attachments decoder
+ Yerase's TNEF Stream Reader allows you to decode application/ms-tnef
+ e-mail attachments, which are usually entitled "winmail.dat" and are
+ generally a file container format that is only readable by Microsoft
+ Outlook. Some TNEF streams also include RTF-formatted data.
+ .
+ libytnef0 is the support library that exposes these functions to other
+ programs. The ytnef program is the frontend for this library, so you should
+ probably install that (included in ytnef-tools) if you want to take advantage
+ of it.
+ .
+ These are the development headers for libytnef0.
+
+Package: ytnef-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: libmailtools-perl, libmime-tools-perl
+Description: ytnef decoder commandline tools
+ Yerase's TNEF Stream Reader allows you to decode application/ms-tnef
+ e-mail attachments, which are usually entitled "winmail.dat" and are
+ generally a file container format that is only readable by Microsoft
+ Outlook. Some TNEF streams also include RTF-formatted data.
+ .
+ These are the frontend programs for the libytnef library, which can be used
+ to decode TNEF attachments on the commandline.
